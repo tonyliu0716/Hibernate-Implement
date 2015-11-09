@@ -1,12 +1,12 @@
 package test;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 import org.tarena.entity.Emp;
 import org.tarena.util.HibernateUtil;
@@ -15,7 +15,7 @@ import org.tarena.util.HibernateUtil;
 
 public class TestEmp {
 	
-	//select one row from database
+	//select one 
 	@Test
 	public void test1() {
 		Session session = HibernateUtil.getSession();
@@ -91,6 +91,22 @@ public class TestEmp {
 		} catch (HibernateException e1) {
 			e1.printStackTrace();
 			ts.rollback();
+		}
+		session.close();
+	}
+	
+	//select all
+	@Test
+	public void test5() {
+		//Hibernate的查询语句，可以包含对象名和属性名
+		//这里的Emp是对象名
+		String hql = "from Emp";
+		Session session = HibernateUtil.getSession();
+		//创建特殊查询对象
+		Query query = session.createQuery(hql);
+		List<Emp> emps = query.list();
+		for(Emp e : emps) {
+			System.out.println(e.getEname() + " " + e.getJob());
 		}
 		session.close();
 	}
