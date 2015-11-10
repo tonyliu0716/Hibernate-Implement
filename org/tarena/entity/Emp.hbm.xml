@@ -9,32 +9,29 @@
     <class name="org.tarena.entity.Emp" table="nerdluv.emp">
     	
     	<!-- 通过id配置主键字段和属性的关系。name属性名，type属性和字段转换时所采用的类型 -->
-        <id name="empno" type="java.lang.Integer">
-            <column name="empno" />
-           
+        <id name="empno" type="integer">
+            <column name="empno" /> 
         </id>
-        
         <!-- 通过property配置其他普通字段和属性的关系。name属性名，type转换的类型名，column字段名 -->
-        
-        <property name="ename" type="java.lang.String">
+        <property name="ename" type="string">
             <column name="ename" />
         </property>
-        <property name="job" type="java.lang.String">
+        <property name="job" type="string">
             <column name="job"/>
         </property>
         <property name="mgr" type="java.lang.Integer">
             <column name="mgr" />
         </property>
-        <property name="hiredate" type="java.sql.Date">
+        <property name="hiredate" type="date">
             <column name="hiredate" />
         </property>
-        <property name="sal" type="java.lang.Double">
+        <property name="sal" type="double">
             <column name="sal" />
         </property>
-        <property name="comm" type="java.lang.Double">
+        <property name="comm" type="double">
             <column name="comm" />
         </property>
-        <property name="deptno" type="java.lang.Integer">
+        <property name="deptno" type="integer">
             <column name="deptno" />
         </property>
     </class>

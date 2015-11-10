@@ -98,6 +98,7 @@ public class TestEmp {
 	//select all
 	@Test
 	public void test5() {
+		
 		//Hibernate的查询语句，可以包含对象名和属性名
 		//这里的Emp是对象名
 		String hql = "from Emp";
