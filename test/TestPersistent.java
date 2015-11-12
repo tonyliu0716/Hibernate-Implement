@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -93,5 +94,21 @@ public class TestPersistent {
 		e.setEname("JJJ");
 		session.flush();
 		session.close();
+	}
+	
+	//怎么批量插入数据？
+	@Test
+	public void batchAdd(List<Emp> emps) {
+		Session session = HibernateUtil.getSession();
+		Transaction ts = session.beginTransaction();
+		for(int i = 0; i < emps.size(); i++) {
+			session.save(emps.get(i));
+			//每1000次刷出到数据库，最后全部再commit
+			if(i % 1000 == 0) {
+				session.flush();
+				session.clear();
+			}
+		}
+		ts.commit();
 	}
 }

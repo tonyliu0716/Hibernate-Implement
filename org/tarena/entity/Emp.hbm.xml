@@ -7,6 +7,9 @@
 <hibernate-mapping>
 	<!-- 通过class指定对象和表的关系。name是类名，table表名 -->
     <class name="org.tarena.entity.Emp" table="nerdluv.emp">
+    
+    	<!-- 允许Emp使用二级缓存，usage指定了缓存级别，可以使用region属性来设置自定义的缓存配置 -->
+    	<cache usage="read-only" />
     	
     	<!-- 通过id配置主键字段和属性的关系。name属性名，type属性和字段转换时所采用的类型 -->
         <id name="empno" type="integer">

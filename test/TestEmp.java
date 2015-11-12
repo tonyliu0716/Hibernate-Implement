@@ -19,9 +19,10 @@ public class TestEmp {
 	@Test
 	public void test1() {
 		Session session = HibernateUtil.getSession();
-		Emp e = (Emp)session.get(Emp.class, 1);
+		Emp e = (Emp)session.load(Emp.class, 1);
 		System.out.println(e.getEname() + " " + e.getJob());
-		session.close(); 
+		//拦截器中自动关闭session，不再需要手写了
+		//session.close();
 	}
 	
 	//insert one row 
